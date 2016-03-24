@@ -3,36 +3,38 @@ package com.levenko;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * Created by Vilagra on 22.03.2016.
  */
 public class SearcCo_e2Test {
 
-    @Test
-    public void testCountAlice() throws Exception {
-        String fileName="Alice30.txt";
-        int result=43;
-
-        Assert.assertEquals(result,SearcCo_e2.countCo_eInFile(fileName));
-
+    private String buildAbsoluteFilePath(String fileName){
+        String workingDir = new File("").getAbsoluteFile().getParent();
+        return workingDir + File.separator + fileName;
     }
 
     @Test
-    public void testCountEmpty() throws Exception {
-        String fileName="emptyFile.txt";
-        int result=0;
+    public void countAliceTest() {
+        String filePath = buildAbsoluteFilePath("alice300.txt");
+        Assert.assertEquals(43,SearcCo_e2.countCo_eInFile(filePath));
+    }
 
-        Assert.assertEquals(result,SearcCo_e2.countCo_eInFile(fileName));
+    @Test
+    public void countEmptyTest(){
+        String filePath = buildAbsoluteFilePath("emptyFile.txt");
+        Assert.assertEquals(0 ,SearcCo_e2.countCo_eInFile(filePath));
 
     }
 
     @Test(expected = FileNotFoundException.class)
-    public void testFileMissing() throws Exception {
-        String fileName="fsdgdgef.txt";
-        SearcCo_e2.countCo_eInFile(fileName);
+    public void fakeFileExpectedExceptionTest(){
+        String filePath = buildAbsoluteFilePath("fsdgdgef.txt");
+        SearcCo_e2.countCo_eInFile(filePath);
     }
 
 }
