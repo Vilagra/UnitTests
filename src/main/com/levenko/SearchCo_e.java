@@ -24,6 +24,7 @@ public class SearchCo_e {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(1);
         long start = System.currentTimeMillis();
         System.out.println("Number of coincidence:"+countCode(allText,0));
         long end = System.currentTimeMillis();

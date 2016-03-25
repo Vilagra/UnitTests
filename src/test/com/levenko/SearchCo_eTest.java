@@ -2,13 +2,16 @@ package com.levenko;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.Description;
+import org.junit.runner.Runner;
+import org.junit.runner.notification.RunNotifier;
 
 import static org.junit.Assert.*;
 
 /**
  * Created by Vilagra on 21.03.2016.
  */
-public class SearchCo_eTest {
+public class SearchCo_eTest extends Runner{
 
     @Before
     public void setUp() throws Exception {
@@ -44,6 +47,18 @@ public class SearchCo_eTest {
     public void testCountCode3() throws Exception {
 
         SearchCo_e.countCode(null,5);
+
+    }
+
+
+    @Override
+    public Description getDescription() {
+        return null;
+    }
+
+    @Override
+    public void run(RunNotifier runNotifier) {
+
 
     }
 }
